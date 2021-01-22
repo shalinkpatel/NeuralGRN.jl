@@ -1,6 +1,3 @@
-using NeuralGRN
-using Test
+using SafeTestsets
 
-@testset "NeuralGRN.jl" begin
-    # Write your tests here.
-end
+@safetestset "Problem Generation Tests" begin include("problem_generation.jl") end
