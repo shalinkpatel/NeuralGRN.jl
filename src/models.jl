@@ -27,6 +27,8 @@ struct DeepPropODE{T <: Real, R <: Real, S <: Real} <: InferablePropODE
     τ :: Vector{S}
 end
 
+### Generative Portion ###
+
 get_graph(prop :: GenerativePropODE) = prop.g
 get_graph(prop :: T) where {T <: InferablePropODE} = prop.prob.g
 
@@ -42,3 +44,5 @@ function generate(g :: PropODE)
     prob = ODEProblem(dynamic_system!, g.x₀, tspan, g.p, saveat = g.τ)
     return solve(prob)
 end
+
+### Inference Portion ###
